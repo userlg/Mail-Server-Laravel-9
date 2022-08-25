@@ -50,12 +50,12 @@ npm run dev
 + Note: This project was tested on Windows 10.
 -----------
 # Screenshots
-![ img1 ](assets/Screenshots/img1.png)
-![ img2 ](assets/Screenshots/img2.png)
-![ img3 ](assets/Screenshots/img3.png)
-![ img4 ](assets/Screenshots/img4.png)
+![ img1 ](assets/img1.png)
+![ img2 ](assets/img2.png)
+![ img3 ](assets/img3.png)
+![ img4 ](assets/img4.png)
 ## Checking the inbox Gmail messages
-![ tests ](assets/Screenshots/tests.png)
+![ tests ](assets/tests.png)
 ## The test cover 71% 
 
 -----------
