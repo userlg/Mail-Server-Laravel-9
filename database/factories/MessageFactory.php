@@ -19,6 +19,8 @@ class MessageFactory extends Factory
         return [
             'title' => fake()->sentence(),
             'message' => fake()->paragraph(),
+            'created_at' =>fake()->dateTimeBetween('-2 year',now()),
+            'updated_at' =>fake()->dateTimeBetween('-150 days',now()),
             'senderEmail' =>fake()->safeEmail()
         ];
     }
