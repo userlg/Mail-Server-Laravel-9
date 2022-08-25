@@ -19,7 +19,7 @@ class MessageFactory extends Factory
         return [
             'title' => fake()->sentence(),
             'message' => fake()->paragraph(),
-            'emailDestiny' =>fake()->safeEmail()
+            'senderEmail' =>fake()->safeEmail()
         ];
     }
 }

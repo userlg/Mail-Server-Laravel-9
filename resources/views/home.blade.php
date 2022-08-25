@@ -18,7 +18,7 @@
         <form action="/" method="POST" class='form-style'>
             @csrf
             <input type="text" class="input-style" required name="title" placeholder="Title of the email">
-            <input type="email" class="input-style" required name="emailDestiny" placeholder="Destiny Email">
+            <input type="email" class="input-style" required name="senderEmail" placeholder="Your email">
             <textarea class='ta-height' required name='message' placeholder='message'></textarea>
             <button class='button-style'>Send</button>
         </form>

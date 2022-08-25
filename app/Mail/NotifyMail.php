@@ -17,11 +17,15 @@ class NotifyMail extends Mailable
      * @return void
      */
 
-    public $message;
+    public $data;
 
-    public function __construct($message)
-    {
-        $this->message = $message;
+    public $subject;
+
+    public function __construct($information)
+    { 
+        $this->subject = $information['title'];
+
+        $this->data = $information;
     }
     /**
      * Build the message.

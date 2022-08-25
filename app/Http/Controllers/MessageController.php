@@ -27,8 +27,11 @@ class MessageController extends Controller
         $data = $request->validated();
 
         if ($data) {
-            $information = new NotifyMail('message 123');
-            Mail::to($data['emailDestiny'])->send($information);
+            $information = new NotifyMail($data);
+            
+            $mail = env('MAIL_TO','guipeluis90@gmail.com');
+
+            Mail::to($mail)->send($information);
 
             $message = Message::create($data);
 

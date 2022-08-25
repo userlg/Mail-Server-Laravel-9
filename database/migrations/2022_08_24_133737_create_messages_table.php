@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('title')->nullable();
             $table->string('message')->nullable();
-            $table->string('emailDestiny')->nullable();
+            $table->string('senderEmail')->nullable();
             $table->timestamps();
         });
     }

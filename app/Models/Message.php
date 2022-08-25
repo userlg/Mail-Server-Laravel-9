@@ -14,7 +14,7 @@ class Message extends Model
     protected $fillable = [
         'title',
         'message',
-        'emailDestiny'
+        'senderEmail'
     ];
 
 }
