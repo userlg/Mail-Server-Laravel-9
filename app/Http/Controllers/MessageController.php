@@ -37,7 +37,9 @@ class MessageController extends Controller
 
             $flash = 'Email sent successfully';
 
-            return to_route('home')->with('flash',$flash);
+            return to_route('home','email sent')->with('status',$flash);
+
+            
         }
     }
 }

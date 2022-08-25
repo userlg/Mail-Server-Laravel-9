@@ -9,6 +9,7 @@ body {
     box-sizing: content-box;
 }
 
+//---------Tags Area------------
 body {
     background-color: antiquewhite;
     width: 100vw;
@@ -20,10 +21,18 @@ body {
     overflow-x: hidden;
 }
 
+strong {
+    font-size: 2vw;
+    margin-bottom: 25px;
+}
+
 //---------Class Area----------//
 .container {
     width: 40%;
     height: 55%;
+    max-width: 450px;
+    min-width: 300px;
+    min-height: 400px;
     background-color: burlywood;
     border: 2px solid chocolate;
     border-radius: 6px;
@@ -90,4 +99,23 @@ body {
 
 .message-style {
     border: 1px solid orange;
+}
+
+//-------Media Queries
+@media screen and (max-width: 500px) {
+    strong {
+        font-size: 2vh;
+    }
+    .title {
+        font-size: 3vh;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    strong {
+        font-size: 2.6vh;
+    }
+    .title {
+        font-size: 50px;
+    }
 }

@@ -11,9 +11,6 @@
 
 <body>
 
-
-
-
     <div class="title">
         <h2>MAIL SERVER</h2>
     </div>
@@ -28,9 +25,11 @@
         </form>
     </div>
 
-    @isset($flash)
-        <strong>{{ $flash }}</strong>
-    @endisset
+    @if (session('status'))
+        <strong>{{ session('status') }}</strong>
+    @else
+        <strong>Welcome send your message to the admin</strong>
+    @endif
 </body>
 
 </html>
