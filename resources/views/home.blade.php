@@ -10,6 +10,10 @@
 </head>
 
 <body>
+
+
+
+
     <div class="title">
         <h2>MAIL SERVER</h2>
     </div>
@@ -23,6 +27,10 @@
             <button class='button-style'>Send</button>
         </form>
     </div>
+
+    @isset($flash)
+        <strong>{{ $flash }}</strong>
+    @endisset
 </body>
 
 </html>

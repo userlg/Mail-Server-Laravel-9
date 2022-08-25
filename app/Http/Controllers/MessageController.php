@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
+//use Illuminate\Http\Request;
 
 use App\Http\Requests\MessageRequest;
 
@@ -29,13 +28,16 @@ class MessageController extends Controller
         if ($data) {
             $information = new NotifyMail($data);
             
-            $mail = env('MAIL_TO','guipeluis90@gmail.com');
+
+            $mail = config('mail.from.address');
 
             Mail::to($mail)->send($information);
 
             $message = Message::create($data);
 
-            return $message;
+            $flash = 'Email sent successfully';
+
+            return to_route('home')->with('flash',$flash);
         }
     }
 }
