@@ -16,11 +16,13 @@ class NotifyMail extends Mailable
      *
      * @return void
      */
-    public function __construct()
-    {
-        //
-    }
 
+    public $message;
+
+    public function __construct($message)
+    {
+        $this->message = $message;
+    }
     /**
      * Build the message.
      *
@@ -28,6 +30,6 @@ class NotifyMail extends Mailable
      */
     public function build()
     {
-        return $this->view('view.name');
+        return $this->view('mail.index');
     }
 }
