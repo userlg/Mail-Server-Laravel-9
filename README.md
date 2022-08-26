@@ -57,6 +57,10 @@ npm run dev
 ## Checking the inbox Gmail messages
 ![ tests ](assets/tests.png)
 ## The test cover 71% 
+-------------------------------
+# Deployment
+### This project was deployed on heroku
+[ Heroku Link ](https://laravel-mail-server.herokuapp.com/)
 
 -----------
 ### Created by Userlg
