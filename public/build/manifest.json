@@ -1,14 +1,21 @@
 {
+  "public/background.jpg": {
+    "file": "assets/background.54e8e097.jpg",
+    "src": "public/background.jpg"
+  },
   "resources/js/app.js": {
     "file": "assets/app.44bb658c.js",
     "src": "resources/js/app.js",
     "isEntry": true,
     "css": [
-      "assets/app.72de0e4f.css"
+      "assets/app.f71566ba.css"
+    ],
+    "assets": [
+      "assets/background.54e8e097.jpg"
     ]
   },
   "resources/js/app.css": {
-    "file": "assets/app.72de0e4f.css",
+    "file": "assets/app.f71566ba.css",
     "src": "resources/js/app.css"
   }
 }
