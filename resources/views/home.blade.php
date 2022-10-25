@@ -33,7 +33,7 @@
     </div>
 
     @if (session('status'))
-        <strong>{{ session('status') }}</strong>
+        <strong class="text-sm sm:text-2xl strong">{{ session('status') }}</strong>
     @else
         <strong class="text-sm sm:text-2xl strong">Welcome send your message to the admin</strong>
     @endif
