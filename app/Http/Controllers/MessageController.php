@@ -24,27 +24,25 @@ class MessageController extends Controller
     public function sendEmail(MessageRequest $request)
     {
 
-      //  $request->ip = $request->ip();
+        $data = $request->validated();
 
-       // $data = $request->validated();
+        $data = [
+            "title" => $request->title,
+            "senderEmail" => $request->senderEmail,
+            "message" => $request->message,
+            "ip"    => $request->ip()
+        ];
 
-        $data = ['ip' => $request->ip()];
+        $information = new NotifyMail($data);
 
-        return $data;
+        $mail = config('mail.from.address');
 
-        if ($data) {
-            $information = new NotifyMail($data);
+        Mail::to($mail)->send($information);
 
+        $message = Message::create($data);
 
-            $mail = config('mail.from.address');
+        $flash = 'Email sent successfully';
 
-            Mail::to($mail)->send($information);
-
-            $message = Message::create($data);
-
-            $flash = 'Email sent successfully';
-
-            return to_route('home', 'email sent')->with('status', $flash);
-        }
+        return to_route('home', 'email sent')->with('status', $flash);
     }
 }

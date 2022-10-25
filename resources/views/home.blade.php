@@ -21,12 +21,23 @@
             @csrf
             <input type="text" class="w-11/12 h-12 border-2 border-sky-600 rounded-sm" required name="title"
                 placeholder="Title of the email">
+            @error('title')
+                <br>
+                <small class="text-redyer font-bold">{{ $message }}</small>
+            @enderror
 
             <input type="email" class="w-11/12 h-12 border-2 border-sky-600 rounded-sm" required name="senderEmail"
                 placeholder="Your email">
+            @error('senderEmail')
+                <br>
+                <small class="text-redyer font-bold">{{ $message }}</small>
+            @enderror
 
-            <textarea class="w-11/12 border-2 border-sky-600 h-1/2 rounded-sm" required name='message' placeholder='message'></textarea>
-
+            <textarea class="w-11/12 border-2 border-sky-600 h-1/2 rounded-sm" required name="message" placeholder='message'></textarea>
+            @error('message')
+                <br>
+                <small class="text-redyer font-bold">{{ $message }}</small>
+            @enderror
             <button
                 class="text-sm sm:text-md text-white bg-purple-700 w-1/3 p-2 rounded-md hover:bg-purple-900 transition-all ease-linear duration-300">Send</button>
         </form>
