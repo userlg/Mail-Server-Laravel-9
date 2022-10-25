@@ -27,7 +27,8 @@ class MessageRequest extends FormRequest
         return [
             'title' => 'min:4|max:100|required',
             'senderEmail' => 'min:7|max:50|required|email',
-            'message' => 'min:10|required'
+            'message' => 'min:10|required',
+            'ip' => 'required|ip'
         ];
     }
 }

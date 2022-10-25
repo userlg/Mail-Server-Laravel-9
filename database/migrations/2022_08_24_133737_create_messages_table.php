@@ -15,9 +15,10 @@ return new class extends Migration
     {
         Schema::create('messages', function (Blueprint $table) {
             $table->id();
-            $table->string('title')->nullable();
-            $table->text('message')->nullable();
-            $table->string('senderEmail')->nullable();
+            $table->string('title');
+            $table->text('message');
+            $table->string('senderEmail')->nullable(false);
+            $table->ipAddress('ip')->default('0.0.0.0');
             $table->timestamps();
         });
     }

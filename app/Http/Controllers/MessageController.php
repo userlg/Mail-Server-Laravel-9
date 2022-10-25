@@ -10,6 +10,9 @@ use Illuminate\Support\Facades\Mail;
 
 use App\Mail\NotifyMail;
 
+use Illuminate\Http\Request;
+
+
 class MessageController extends Controller
 {
 
@@ -21,11 +24,17 @@ class MessageController extends Controller
     public function sendEmail(MessageRequest $request)
     {
 
-        $data = $request->validated();
+      //  $request->ip = $request->ip();
+
+       // $data = $request->validated();
+
+        $data = ['ip' => $request->ip()];
+
+        return $data;
 
         if ($data) {
             $information = new NotifyMail($data);
-            
+
 
             $mail = config('mail.from.address');
 
@@ -35,9 +44,7 @@ class MessageController extends Controller
 
             $flash = 'Email sent successfully';
 
-            return to_route('home','email sent')->with('status',$flash);
-
-            
+            return to_route('home', 'email sent')->with('status', $flash);
         }
     }
 }
