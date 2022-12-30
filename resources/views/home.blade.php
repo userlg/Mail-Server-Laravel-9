@@ -1,25 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="icon" href="{{ asset('favicon.ico') }}">
-    <title>Mail Server</title>
-    @vite(['resources/js/app.js'])
-</head>
-
-<body>
-
-    <div class="title mb-8">
-        <h2>MAIL SERVER</h2>
-    </div>
+<x-layouts.base title="Home">
 
     <div class="container">
+        <div class="title mb-8">
+            <h2 class="font-bangers text-center text-2xl">MAIL SERVER</h2>
+        </div>
         <form action="/" method="POST" class="flex flex-col gap-4 w-full justify-center items-center">
             @csrf
-            <input type="text" class="w-11/12 h-12 border-2 border-sky-600 rounded-sm" required name="title"
+            <input type="text" class="w-11/12 h-12 border-none focus:border-amber-300 focus:ring focus:ring-red-600  rounded-sm" required name="title"
                 placeholder="Title of the email" value="{{ old('title') }}">
             @error('title')
                 <br>
@@ -49,6 +36,5 @@
     @else
         <strong class="text-sm sm:text-2xl strong">Welcome send your message to the admin</strong>
     @endif
-</body>
 
-</html>
+</x-layouts.base>

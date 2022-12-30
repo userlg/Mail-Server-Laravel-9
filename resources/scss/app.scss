@@ -6,9 +6,8 @@
 
 
 //---------IMPORTS
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap');
-$ubuntu-text: 'Ubuntu',
-    sans-serif;
+
+@import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
 
 html,
 body {
@@ -17,10 +16,21 @@ body {
     box-sizing: content-box;
 }
 
+//---------Toggle button
+#toggle:checked~label div .toggle-active {
+  @apply translate-x-3 bg-blue-400;
+}
+
+.toggle-reload {
+  @apply ml-3 bg-blue-900;
+}
+
+
+
 //---------Tags Area------------
 body {
-    background-color: antiquewhite;
-    background: url('background.jpg');
+    background-color: white;
+    //background: url('background.jpg');
     background-position: center center;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -32,130 +42,4 @@ body {
     justify-content: center;
     flex-direction: column;
     overflow-x: hidden;
-}
-
-.strong {
-    margin-bottom: 10px;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    -webkit-text-stroke: 0.4px #0a0a0a;
-    color: white;
-}
-
-//---------Class Area----------//
-.container {
-    width: 40%;
-    height: 40%;
-    max-width: 450px;
-    min-width: 300px;
-    min-height: 320px;
-    background-color: #00B8FF;
-    border: 2px solid #001EFF;
-    border-radius: 6px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 7px;
-    gap: 3px;
-    margin-bottom: 100px;
-}
-
-.title {
-    font-family: $ubuntu-text;
-    font-weight: bolder;
-    font-size: 4.4vw;
-    color: #00B8FF;
-    -webkit-text-stroke: 1px #001EFF;
-}
-
-.input-style {
-    width: 90%;
-    height: 10%;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    font-family: 'Times New Roman', Times, serif;
-    font-size: 18px;
-    border-radius: 4px;
-    border: 1px solid violet;
-
-    &:hover {
-        border-color: rgb(35, 81, 180);
-    }
-}
-
-.button-style {
-    padding: 5px;
-    color: white;
-    font-family: 'Times New Roman', Times, serif;
-    font-weight: 600;
-    font-size: 2vh;
-    background-color: rgb(102, 0, 128);
-    border-radius: 5px;
-    width: 30%;
-    margin-top: 25px;
-
-    &:hover {
-        transition: all 3s;
-        animation: changeColor 3s 1.2s linear infinite;
-    }
-}
-
-.ta-height {
-    height: 200px;
-    width: 90%;
-    font-size: 16px;
-    font-family: 'Times New Roman', Times, serif;
-    border-radius: 4px;
-    border: 1px solid violet;
-
-    &:hover {
-        border-color: rgb(35, 81, 180);
-    }
-}
-
-.form-style {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    width: 100%;
-    height: 99%;
-}
-
-.message-style {
-    border: 1px solid orange;
-}
-
-//-------Media Queries
-@media screen and (max-width: 500px) {
-    strong {
-        font-size: 2vh;
-    }
-
-    .title {
-        font-size: 3vh;
-    }
-}
-
-@media screen and (min-width: 1200px) {
-    strong {
-        font-size: 2.6vh;
-    }
-
-    .title {
-        font-size: 50px;
-    }
-}
-
-//------Animation 
-@keyframes changeColor {
-    0% {
-        background: #1a617e;
-        border: none;
-    }
-
-    100% {
-        background: #001EFF;
-        border: none;
-    }
 }
