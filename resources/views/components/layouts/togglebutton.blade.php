@@ -1,6 +1,6 @@
 <div>
     <div class="flex mt-2" id="toggle-button">
-        <div class="cursor-pointer flex flex-row space-x-2">
+        <div class="cursor-pointer flex flex-row">
             <span class="text-xs text-gray-800"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                     stroke-width="1.5" stroke="currentColor" class="w-6 h-6 dark:stroke-yellow-200">
                     <path stroke-linecap="round" stroke-linejoin="round"

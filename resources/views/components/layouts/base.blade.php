@@ -10,9 +10,9 @@
         <title>MailServer || {{ $title }}</title>
         @vite(['resources/js/app.js'])
     </head>
-
-    <body>
-         <x-layouts.navbar />
+    <x-layouts.navbar />
+    <body class="bg-white dark:bg-cyan-900">
+        
 
         {{ $slot }}
     </body>

@@ -6,6 +6,8 @@ use App\Http\Requests\MessageRequest;
 
 use App\Models\Message;
 
+use App\Models\Temp;
+
 use Illuminate\Support\Facades\Mail;
 
 use App\Mail\NotifyMail;
@@ -43,6 +45,6 @@ class MessageController extends Controller
 
         $flash = 'Email sent successfully';
 
-        return to_route('home', 'email sent')->with('status', $flash);
+        return to_route('home')->with('status', $flash);
     }
 }

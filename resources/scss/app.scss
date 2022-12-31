@@ -18,16 +18,13 @@ body {
 
 //---------Toggle button
 #toggle:checked~label div .toggle-active {
-  @apply translate-x-3 bg-blue-400;
+    @apply translate-x-3 bg-pink-700;
 }
 
 .toggle-reload {
-  @apply ml-3 bg-blue-900;
+    @apply ml-3 bg-pink-700;
 }
 
-
-
-//---------Tags Area------------
 body {
     background-color: white;
     //background: url('background.jpg');
@@ -37,9 +34,5 @@ body {
     background-size: cover;
     width: 100vw;
     height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
     overflow-x: hidden;
 }

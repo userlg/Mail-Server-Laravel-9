@@ -23,7 +23,7 @@ class RoutesTest extends TestCase
     public function test_route_home_get()
     {
         $response = $this->get('/');
-        $response->assertSee('Mail Server');
+        $response->assertSee('MAIL SERVER');
         $response->assertOk();
     }
 
