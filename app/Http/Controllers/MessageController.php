@@ -23,6 +23,30 @@ class MessageController extends Controller
         return view('home');
     }
 
+    public function generateCode()
+    {
+
+    //This function generate the random code
+        
+        $code = chr(rand(ord('A'), ord('Z')));
+
+        for($i=0; $i < 5; $i++){
+
+             $par = random_int(1,2);
+
+             if ($par == 1){
+
+                $code = $code . strval(random_int(0,9));
+             }
+             else {
+                $code = $code .chr(rand(ord('A'), ord('Z')));
+             }
+        }
+
+        return $code;
+    }
+
+
     public function sendEmail(MessageRequest $request)
     {
 
@@ -35,7 +59,7 @@ class MessageController extends Controller
             "ip"    => $request->ip()
         ];
 
-        $information = new NotifyMail($data);
+      /*  $information = new NotifyMail($data);
 
         $mail = config('mail.from.address');
 
@@ -45,6 +69,10 @@ class MessageController extends Controller
 
         $flash = 'Email sent successfully';
 
-        return to_route('home')->with('status', $flash);
+        return to_route('home')->with('status', $flash); */
+
+        $code = $this->generateCode();
+
+        return view('confirmation',compact(['code']));
     }
 }
