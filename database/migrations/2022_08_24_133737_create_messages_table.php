@@ -19,6 +19,7 @@ return new class extends Migration
             $table->text('message');
             $table->string('senderEmail')->nullable(false);
             $table->ipAddress('ip')->default('0.0.0.0');
+            $table->boolean('status')->default(false);
             $table->timestamps();
         });
     }

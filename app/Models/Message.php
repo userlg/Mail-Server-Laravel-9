@@ -15,6 +15,7 @@ class Message extends Model
         'title',
         'message',
         'senderEmail',
-        'ip'
+        'ip',
+        'status'
     ];
 }

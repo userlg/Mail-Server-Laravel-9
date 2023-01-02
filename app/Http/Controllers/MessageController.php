@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\Mail;
 
 use App\Mail\NotifyMail;
 
+use App\Mail\CodeVerificationMail;
+
 use Illuminate\Http\Request;
 
 
@@ -26,21 +28,20 @@ class MessageController extends Controller
     public function generateCode()
     {
 
-    //This function generate the random code
-        
+        //This function generate the random code
+
         $code = chr(rand(ord('A'), ord('Z')));
 
-        for($i=0; $i < 5; $i++){
+        for ($i = 0; $i < 5; $i++) {
 
-             $par = random_int(1,2);
+            $par = random_int(1, 2);
 
-             if ($par == 1){
+            if ($par == 1) {
 
-                $code = $code . strval(random_int(0,9));
-             }
-             else {
-                $code = $code .chr(rand(ord('A'), ord('Z')));
-             }
+                $code = $code . strval(random_int(0, 9));
+            } else {
+                $code = $code . chr(rand(ord('A'), ord('Z')));
+            }
         }
 
         return $code;
@@ -59,13 +60,15 @@ class MessageController extends Controller
             "ip"    => $request->ip()
         ];
 
-      /*  $information = new NotifyMail($data);
+        $email = $data["senderEmail"];
+
+        $message = Message::create($data);
+
+        /*  $information = new NotifyMail($data);
 
         $mail = config('mail.from.address');
 
         Mail::to($mail)->send($information);
-
-        $message = Message::create($data);
 
         $flash = 'Email sent successfully';
 
@@ -73,6 +76,17 @@ class MessageController extends Controller
 
         $code = $this->generateCode();
 
-        return view('confirmation',compact(['code']));
+        $information =  new CodeVerificationMail([
+            "title" => "Verification Code",
+            "message" => "Please Introduce the verification code to continue",
+            "code" => $code
+        ]);
+
+        $mail = config('mail.from.address');
+
+        Mail::to($mail)->send($information);
+
+
+        return view('confirmation', compact(['email']));
     }
 }
