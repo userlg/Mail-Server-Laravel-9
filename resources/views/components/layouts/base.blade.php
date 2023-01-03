@@ -11,8 +11,14 @@
         @vite(['resources/js/app.js'])
     </head>
     <x-layouts.navbar />
+
     <body class="bg-white dark:bg-cyan-900">
-        
+
+        @if (session('status'))
+        <div class="w-11/12 lg:w-1/2 animate-fade-in-down border border-pink-700 bg-gray-50 shadow-md dark:shadow-none shadow-gray-500  dark:bg-pink-700 dark:border-pink-800 dark:text-white transition-all duration-300 ease-linear rounded-sm mt-10 mx-auto p-3 flex flex-col items-center justify-center" id="status">
+           <p class="text-sm sm:text-base text-justify"> {{ session('status') }} </p>
+        </div>
+        @endif
 
         {{ $slot }}
     </body>

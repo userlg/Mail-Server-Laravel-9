@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\Mail;
 
 use App\Mail\NotifyMail;
 
+use App\Jobs\SendCodeEmail;
+
 use App\Mail\CodeVerificationMail;
 
 use Illuminate\Http\Request;
@@ -53,39 +55,33 @@ class MessageController extends Controller
 
         $data = $request->validated();
 
+        $email = $data["senderEmail"];
+
         $data = [
             "title" => $request->title,
-            "senderEmail" => $request->senderEmail,
+            "senderEmail" => $email,
             "message" => $request->message,
             "ip"    => $request->ip()
         ];
 
-        $email = $data["senderEmail"];
+        Message::create($data);
 
-        $message = Message::create($data);
+        //return dd(Temp::find($email));
 
-        /*  $information = new NotifyMail($data);
+        if (count(Temp::where('email', $email)->get()) == 0) {
 
-        $mail = config('mail.from.address');
+            $flash = 'Email sent successfully';
+            $code = $this->generateCode();
+            Temp::create([
+                'email' => $email,
+                'code' => $code
+            ]);
+            SendCodeEmail::dispatch($code);
+        } else {
+            $flash = 'Email was already sent, please check your inbox';
+        }
 
-        Mail::to($mail)->send($information);
-
-        $flash = 'Email sent successfully';
-
-        return to_route('home')->with('status', $flash); */
-
-        $code = $this->generateCode();
-
-        $information =  new CodeVerificationMail([
-            "title" => "Verification Code",
-            "message" => "Please Introduce the verification code to continue",
-            "code" => $code
-        ]);
-
-        $mail = config('mail.from.address');
-
-        Mail::to($mail)->send($information);
-
+        session()->flash('status', $flash);
 
         return view('confirmation', compact(['email']));
     }
