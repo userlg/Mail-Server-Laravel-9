@@ -11,9 +11,9 @@
 </head>
 
 <body
-    style="background-color: white; padding: 12px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap:5px;">
+    style="background-color: #164E63; padding: 12px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap:5px;">
 
-    <div style="margin: auto; border: 1px solid #BE185D; padding: 5px; width: 60%;">
+    <div style="margin: auto; border: 1px solid #BE185D; padding: 5px; width: 60%; background-color: white;">
         <h3 style="color: #BE185D; font-family: 'Bangers', cursive; letter-spacing: 0.1rem; text-align: center">
             {{ $data['message'] }}</h3>
 
