@@ -2,7 +2,7 @@
 
     <div class="container mx-auto ">
 
-        <form action="/" method="POST"
+        <form action="{{ route('email.form') }}" method="POST"
             class="flex flex-col  animate-fade-in-down  p-4 gap-4 mx-auto bg-gray-50 dark:bg-cyan-900 transition-all duration-300 ease-linear  justify-center items-center mt-28 w-11/12 sm:w-3/4 border rounded lg:w-1/3 shadow-md shadow-gray-500 dark:shadow-pink-900  border-black dark:border-pink-700">
             @csrf
             <div>
@@ -35,22 +35,6 @@
                 class="text-sm sm:text-md text-white bg-pink-700 hover:bg-pink-800 w-1/3 p-2 rounded-md  transition-all ease-linear duration-300">Send</button>
         </form>
 
-        {{-- Status Message --}}
-        @if (session('status'))
-            <div>
-                <p
-                    class="text-sm md:text-2xl text-black dark:text-white text-center transition-all ease-in duration-300">
-                    {{ session('status') }}</p>
-            </div>
-        @else
-            <div>
-                <p
-                    class="text-sm md:text-2xl text-black dark:text-white text-center transition-all ease-in duration-300">
-                    Welcome send your message to
-                    the
-                    admin</p>
-            </div>
-        @endif
 
     </div>
 

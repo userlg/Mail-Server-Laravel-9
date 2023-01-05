@@ -8,13 +8,9 @@ use App\Models\Message;
 
 use App\Models\Temp;
 
-use Illuminate\Support\Facades\Mail;
-
-use App\Mail\NotifyMail;
-
 use App\Jobs\SendCodeEmail;
 
-use App\Mail\CodeVerificationMail;
+use App\Jobs\SendMessage;
 
 use Illuminate\Http\Request;
 
@@ -66,8 +62,6 @@ class MessageController extends Controller
 
         Message::create($data);
 
-        //return dd(Temp::find($email));
-
         if (count(Temp::where('email', $email)->get()) == 0) {
 
             $flash = 'Email sent successfully';
@@ -84,5 +78,44 @@ class MessageController extends Controller
         session()->flash('status', $flash);
 
         return view('confirmation', compact(['email']));
+    }
+
+    public function confirmCode(Request $request)
+    {
+
+        $email = $request->email;
+
+        $code = $request->input1 . $request->input2 . $request->input3 . $request->input4 . $request->input5 . $request->input6;
+
+        $result = Temp::where('email', $email)->get(['id', 'code']);
+
+        if (count($result) == 1 && ($code == $result[0]['code'])) {
+
+            Temp::destroy($result[0]['id']);
+
+            $message = Message::where('senderEmail', $email)->where('status', 0)->first();
+
+            $message->status = true;
+
+            $message->save();
+
+            $data = [
+                "title" => $message->title,
+                "message" => $message->message,
+                "senderEmail" => $message->senderEmail,
+                "ip" => $message->ip
+            ];
+
+            SendMessage::dispatch($data);
+
+            session()->flash('status', 'Email sent correctly to the admin');
+
+            return view('home');
+        } else {
+
+            session()->flash('status', 'Introduce the right code');
+
+            return view('confirmation', compact(['email']));
+        }
     }
 }
