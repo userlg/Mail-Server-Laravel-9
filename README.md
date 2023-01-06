@@ -55,8 +55,8 @@ npm run dev
 ![ img3 ](assets/img3.png)
 ![ img4 ](assets/img4.png)
 ## Checking the inbox Gmail messages
-![ tests ](assets/tests.png)
-## The test cover 71% 
+![ tests ](assets/test-coverage.png)
+## The test coverage 91% 
 
 -----------
 ### Created by Userlg

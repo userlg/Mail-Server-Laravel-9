@@ -26,15 +26,14 @@ class RoutesTest extends TestCase
      * @return void
      */
 
-
-    public function test_route_home_get()
+    public function test_route_home_form_email_message_get()
     {
         $response = $this->get('/');
         $response->assertSee('MAIL SERVER');
         $response->assertOk();
     }
 
-    public function test_route_home_post()
+    public function test_send_form_email_post()
     {
 
         //$this->withExceptionHandling();
@@ -62,6 +61,36 @@ class RoutesTest extends TestCase
         $this->assertCount(1, Message::all());
     }
 
+    public function test_send_form_email_twice_post()
+    {
+        $this->withoutMiddleware();
+
+        $this->expectsJobs(SendCodeEmail::class);
+
+        $message = Message::factory()->make();
+
+        $email = "ornell12@gmail.com";
+
+        $data = [
+            'title' => $message->title,
+            'senderEmail' => $email,
+            'message' => $message->message
+        ];
+
+        $response = $this->post(route('email.form'), $data);
+
+        $response->assertSee($email);
+
+        $response->assertStatus(200);
+
+        $response = $this->post(route('email.form'), $data);
+
+        $response->assertSessionHas('status', 'Email was already sent, please check your inbox');
+    }
+
+
+
+
     public function test_mail_server_database_has_message()
     {
         $message = Message::factory()->create();
@@ -74,7 +103,6 @@ class RoutesTest extends TestCase
         $temp = Temp::factory()->create();
         $this->assertDatabaseHas('temps', ['email' => $temp->email]);
     }
-
 
     public function test_mailable_notifyMail()
     {

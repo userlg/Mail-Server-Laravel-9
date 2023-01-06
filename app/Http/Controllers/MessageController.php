@@ -60,24 +60,30 @@ class MessageController extends Controller
             "ip"    => $request->ip()
         ];
 
+        if (count(Message::where('senderEmail', $email)->where('status', 0)->get()) > 0) {
+
+            session()->now('status', 'Email was already sent, please check your inbox');
+
+            return view('confirmation', compact(['email']));
+        }
+
         Message::create($data);
 
         if (count(Temp::where('email', $email)->get()) == 0) {
 
-            $flash = 'Email sent successfully';
             $code = $this->generateCode();
+
             Temp::create([
                 'email' => $email,
                 'code' => $code
             ]);
+
             SendCodeEmail::dispatch($code);
-        } else {
-            $flash = 'Email was already sent, please check your inbox';
+
+            session()->now('status', 'Code sent successfully');
+
+            return view('confirmation', compact(['email']));
         }
-
-        session()->flash('status', $flash);
-
-        return view('confirmation', compact(['email']));
     }
 
     public function confirmCode(Request $request)
@@ -108,12 +114,12 @@ class MessageController extends Controller
 
             SendMessage::dispatch($data);
 
-            session()->flash('status', 'Email sent correctly to the admin');
-
-            return to_route('home');
+            return redirect('/')->with('status', 'Email sent correctly to the admin');
         } else {
 
-            return view('confirmation', compact(['email']))->with('status', 'Introduce the right code');
+            session()->now('status', 'Introduce the right code');
+
+            return view('confirmation', compact(['email']));
         }
     }
 }

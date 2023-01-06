@@ -44,7 +44,7 @@ class ConfirmationTest extends TestCase
 
         $this->assertCount(1, Message::all());
 
-        $response->assertSessionHas('status', 'Email sent successfully');
+        $response->assertSessionHas('status', 'Code sent successfully');
 
         $response = $this->post(route('email.form'), $data);
 
@@ -102,10 +102,9 @@ class ConfirmationTest extends TestCase
             "input6" => "B",
             "email" => $email
         ]);
-        $response->dumpSession();
 
         $response->assertViewIs('confirmation');
 
-        $response->assertViewHas('status', 'Introduce the right code');
+        $response->assertSessionHas('status', 'Introduce the right code');
     }
 }
