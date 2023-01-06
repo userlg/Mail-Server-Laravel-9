@@ -110,12 +110,10 @@ class MessageController extends Controller
 
             session()->flash('status', 'Email sent correctly to the admin');
 
-            return view('home');
+            return to_route('home');
         } else {
 
-            session()->flash('status', 'Introduce the right code');
-
-            return view('confirmation', compact(['email']));
+            return view('confirmation', compact(['email']))->with('status', 'Introduce the right code');
         }
     }
 }
