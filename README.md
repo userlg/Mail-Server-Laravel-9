@@ -62,6 +62,10 @@ php artisan queue:work
 + Note: This project was tested on Windows 10.
 -----------
 # Screenshots
++ General cheme of the mail server
+
+![ scheme]( assets/Scheme.png)
+
 + Project dark mode implement with tailwind
 ![ img1 ](assets/img1.png)
 ![ img2 ](assets/img2.png)
