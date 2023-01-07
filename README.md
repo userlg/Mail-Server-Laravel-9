@@ -6,7 +6,9 @@
 ![ node ]( assets/node.png)
 
 ### A simple mail server with the unit test and the smtp mail service active. This app allow you send an email to the creator of this app. Are you lucky ??
-Send a email and try.
+Send a email and try!!
+-------------------
+![ EmailLogo](https://i.imgur.com/4BELzPD.png)
 -------------------
 # Requirements
 

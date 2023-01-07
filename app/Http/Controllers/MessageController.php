@@ -11,9 +11,9 @@ use App\Models\Temp;
 use App\Jobs\SendCodeEmail;
 
 use App\Jobs\SendMessage;
-
+use App\Mail\NotifyMail;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Mail;
 
 class MessageController extends Controller
 {
@@ -59,6 +59,7 @@ class MessageController extends Controller
             "message" => $request->message,
             "ip"    => $request->ip()
         ];
+
 
         if (count(Message::where('senderEmail', $email)->where('status', 0)->get()) > 0) {
 
