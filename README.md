@@ -75,7 +75,7 @@ php artisan queue:work
 ![ img8 ](assets/img8.png)
 + Finally the email recieved after the verification code process
 ![ img9 ](assets/img9.png)
-## Checking the inbox Gmail messages
++ Checking the mailtrap inbox
 ![ tests ](assets/test-coverage.png)
 ## The test coverage 91% 
 
