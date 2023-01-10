@@ -19,12 +19,14 @@ class SendCodeEmail implements ShouldQueue
 
     public $data;
 
+    public $email;
+
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct($code)
+    public function __construct($email, $code)
     {
         $data =  new CodeVerificationMail([
             "title" => "Verification Code",
@@ -33,6 +35,8 @@ class SendCodeEmail implements ShouldQueue
         ]);
 
         $this->data = $data;
+
+        $this->email = $email;
     }
 
     /**
@@ -42,8 +46,6 @@ class SendCodeEmail implements ShouldQueue
      */
     public function handle()
     {
-        $mail = config('mail.from.address');
-
-        Mail::to($mail)->send($this->data);
+        Mail::to($this->email)->send($this->data);
     }
 }

@@ -79,7 +79,7 @@ class MessageController extends Controller
                 'code' => $code
             ]);
 
-            SendCodeEmail::dispatch($code);
+            SendCodeEmail::dispatch($email, $code);
 
             session()->now('status', 'Code sent successfully');
 
