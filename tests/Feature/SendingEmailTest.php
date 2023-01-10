@@ -17,7 +17,7 @@ use App\Models\Message;
 
 use App\Models\Temp;
 
-class RoutesTest extends TestCase
+class SendingEmailTest extends TestCase
 {
     use RefreshDatabase;
     /**
@@ -128,7 +128,7 @@ class RoutesTest extends TestCase
 
         $code = "AAAFFF";
 
-        SendCodeEmail::dispatch($code);
+        SendCodeEmail::dispatch("admin@laravel.org",$code);
 
         $mailable =  new CodeVerificationMail([
             "title" => "Verification Code",
