@@ -128,7 +128,7 @@ class SendingEmailTest extends TestCase
 
         $code = "AAAFFF";
 
-        SendCodeEmail::dispatch("admin@laravel.org",$code);
+        SendCodeEmail::dispatch("admin@laravel.org", $code);
 
         $mailable =  new CodeVerificationMail([
             "title" => "Verification Code",
