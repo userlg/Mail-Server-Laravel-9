@@ -21,7 +21,7 @@
                     style="width: 150px; height: 150px; margin: auto; border-radius: 7px;">
             </div>
             <h4 style="text-align: center; color: #BE185D; font-size: 18px;">From: {{ $data['senderEmail'] }}</h4>
-            <p style="text-align: center; font-weight: 700; font-size: 18px;">Ip: {{ $data['ip'] }}</p>
+            {{--   <p style="text-align: center; font-weight: 700; font-size: 18px;">Ip: {{ $data['ip'] }}</p> --}}
             <p style="text-align: center; font-weight: 500; font-size: 16px;">{{ $data['message'] }}</p>
         </div>
     </div>
