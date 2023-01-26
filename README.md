@@ -82,6 +82,8 @@ php artisan queue:work
 + Checking the mailtrap inbox
 ![ tests ](assets/test-coverage.png)
 ## The test coverage 91% 
-
+-----------
+# Demo Video
+[ Youtube Link ](https://youtu.be/m3UHl52fbvc)
 -----------
 ### Created by Userlg
